@@ -9,6 +9,7 @@ Route::get('/', function () {
     return redirect('/buku');
 });
 
+
 Route::resource('buku', BukuController::class);
 
 use App\Http\Models\User;
@@ -67,3 +68,8 @@ Route::post('/logout', function (Request $request) {
     $request->session()->regenerateToken();
     return redirect('/login')->with('success', 'Anda berhasil logout.');
 })->name('logout');
+=======
+Route::get('/login', function() {
+    return view('login');
+});
+
