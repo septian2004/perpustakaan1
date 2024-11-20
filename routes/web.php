@@ -3,6 +3,14 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\BukuController;
+
+Route::get('/', function () {
+    return redirect('/buku');
+});
+
+Route::resource('buku', BukuController::class);
+
 use App\Http\Models\User;
 
 // Rute Login
