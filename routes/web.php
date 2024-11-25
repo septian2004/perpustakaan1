@@ -1,5 +1,9 @@
-<?php
+use App\Http\Controllers\MemberController;
 
+
+// Route untuk CRUD anggota
+Route::resource('members', MemberController::class);
+=======
 use App\Http\Controllers\AuthController;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -22,3 +26,4 @@ Route::get('/dashboard', function () {
 Route::get('/login', function() {
     return view('login');
 });
+
