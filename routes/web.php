@@ -1,18 +1,16 @@
 <?php
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\BookController; 
+use App\Http\Controllers\BorrowController;
 
-use Illuminate\Support\Facades\Route;
+// Route untuk CRUD anggota
+Route::resource('members', MemberController::class);
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+// Route untuk CRUD buku
+Route::resource('books', BookController::class);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route untuk pengembalian buku
+Route::get('/borrows', [BorrowController::class, 'index'])->name('borrows.index');
+Route::get('/borrows/create', [BorrowController::class, 'borrowForm'])->name('borrows.create');
+Route::post('/borrows', [BorrowController::class, 'borrow'])->name('borrows.store');
+Route::post('/borrows/return/{id}', [BorrowController::class, 'returnBook'])->name('borrows.return');
